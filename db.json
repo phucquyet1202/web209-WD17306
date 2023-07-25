@@ -1,0 +1,24 @@
+{
+  "products": [
+    {
+      "id": 4,
+      "name": "san pham a"
+    },
+    {
+      "id": 5,
+      "name": "san pham b"
+    },
+    {
+      "id": 7,
+      "name": "san pham c"
+    },
+    {
+      "id": 8,
+      "name": "san pham d"
+    },
+    {
+      "name": "san pham f",
+      "id": 9
+    }
+  ]
+}
