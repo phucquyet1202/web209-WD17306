@@ -1,17 +1,19 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from "react-redux"
-import { addProducts, fetchProducts, removeProducts, updateProducts } from './actions/product'
 import { Dispatch } from 'redux'
 import Cart from '@/components/cart/cart'
+import { useAppDispatch, useAppSelector } from './store/hook'
+import { useDispatch } from 'react-redux'
+import { getProduct } from './actions/product'
 
 type Props = {}
 
 const Product = (props: Props) => {
-    const { products, isLoading, err } = useSelector((state: any) => state.productReducer)
-    const dispatch: Dispatch<any> = useDispatch()
+    const { products, isLoading, err } = useAppSelector((state: any) => state.products)
+    const dispatch = useAppDispatch()
+    console.log(products);
     useEffect(() => {
-        dispatch(fetchProducts())
+        dispatch(getProduct())
     }, [dispatch])
     // console.log(products);
     if (isLoading) return <div>Loading...</div>;
@@ -19,7 +21,7 @@ const Product = (props: Props) => {
     return (
         <div>
             <table>
-                <button onClick={() => dispatch(addProducts({ name: "san pham duoc them" }))}>them</button>
+                {/* <button onClick={() => dispatch(addProducts({ name: "san pham duoc them" }))}>them</button> */}
                 <tr>
                     <td>stt</td>
                     <td>ten sp</td>
@@ -29,14 +31,14 @@ const Product = (props: Props) => {
                     return <tr key={pro.id}>
                         <td>{index + 1}</td>
                         <td>{pro.name}</td>
-                        <td><button onClick={() => dispatch(removeProducts(pro.id))}>xoa</button>
+                        {/* <td><button onClick={() => dispatch(removeProducts(pro.id))}>xoa</button>
                             <button onClick={() => dispatch(updateProducts({ id: pro.id, name: "san pham update" }))}>sua</button></td>
-                        <button onClick={() => dispatch({ type: "cart/add", payload: { id: pro.id, name: pro.name, quantity: 1 } })}>them vao gio hang</button>
+                        <button onClick={() => dispatch({ type: "cart/add", payload: { id: pro.id, name: pro.name, quantity: 1 } })}>them vao gio hang</button> */}
                     </tr>
                 })}
             </table>
             <div>
-                <Cart />
+                {/* <Cart /> */}
             </div>
         </div>
     )
